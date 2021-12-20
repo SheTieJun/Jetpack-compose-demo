@@ -37,6 +37,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import me.shetj.composekit.R
+import me.shetj.composekit.utils.log
 
 @Composable
 fun DynamicTheme(

@@ -181,7 +181,7 @@ fun ShowDialog(openDialog: MutableState<Boolean>) {
         onDismissRequest = {
             openDialog.value = false
         },
-        icon = { Icon(Icons.Filled.Camera, contentDescription = null) },
+//        icon = { Icon(Icons.Filled.Camera, contentDescription = null) },
         title = {
             Text(text = "获取权限")
         },
