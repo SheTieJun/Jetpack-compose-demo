@@ -1,3 +1,26 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2019 SheTieJun
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package me.shetj.composekit.ui.theme
 
 import androidx.compose.material.Colors
@@ -18,7 +41,6 @@ val Green50 = Color(red = 25, green = 134, blue = 57)
 val Green80 = Color(red = 109, green = 213, blue = 140)
 val Green90 = Color(red = 196, green = 238, blue = 208)
 
-
 val Blue10 = Color(red = 4, green = 30, blue = 73)
 val Blue100 = Color(red = 255, green = 255, blue = 255)
 val Blue20 = Color(red = 6, green = 46, blue = 111)
@@ -26,7 +48,6 @@ val Blue30 = Color(red = 8, green = 66, blue = 160)
 val Blue40 = Color(red = 11, green = 87, blue = 208)
 val Blue80 = Color(red = 168, green = 199, blue = 250)
 val Blue90 = Color(red = 211, green = 227, blue = 253)
-
 
 val Yellow10 = Color(red = 66, green = 31, blue = 0)
 val Yellow100 = Color(red = 255, green = 255, blue = 255)

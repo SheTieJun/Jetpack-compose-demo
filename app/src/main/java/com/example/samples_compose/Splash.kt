@@ -1,6 +1,28 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2019 SheTieJun
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package com.example.samples_compose
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.animation.OvershootInterpolator
@@ -24,14 +46,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.delay
 import me.shetj.composekit.ui.theme.RedTheme
-import me.shetj.composekit.ui.theme.SystemUIController
 import me.shetj.composekit.ui.theme.getContext
 
 class Splash : AppCompatActivity() {
@@ -39,26 +60,21 @@ class Splash : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
-
         setContent {
 
-            SystemUIController {
-                setSystemBarsColor(Color.Transparent, darkIcons = true)
-            }
+            val systemUiController = rememberSystemUiController()
+            systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = true)
 
             // A surface container using the 'background' color from the theme
             ProvideWindowInsets(consumeWindowInsets = true) {
                 Surface(color = MaterialTheme.colorScheme.background) {
-                    SplashScreen{
+                    SplashScreen {
                         finish()
                     }
-
                 }
             }
         }
     }
-
-
 }
 
 @Composable
@@ -67,16 +83,16 @@ fun Greeting2() {
         painter = painterResource(id = R.drawable.cathedral_rock),
         contentDescription = "pic",
         modifier = Modifier
-            .fillMaxWidth() //match_parent
+            .fillMaxWidth() // match_parent
             .fillMaxHeight(),
         alignment = Alignment.Center,
-        contentScale = ContentScale.Crop, //scaleType
+        contentScale = ContentScale.Crop, // scaleType
         alpha = 0.5f,
     )
 }
 
 @Composable
-fun SplashScreen(onFinish:(()->Unit)? = null) {
+fun SplashScreen(onFinish: (() -> Unit)? = null) {
     val scale = remember {
         Animatable(0f)
     }
@@ -89,14 +105,14 @@ fun SplashScreen(onFinish:(()->Unit)? = null) {
                 durationMillis = 800,
                 easing = {
                     OvershootInterpolator(4f).getInterpolation(it)
-                })
+                }
+            )
         )
         // Customize the delay time
         delay(1000L)
         context.startActivity(Intent(context, MainActivity::class.java))
         onFinish?.invoke()
     }
-
 
     Box(
         contentAlignment = Alignment.Center,
@@ -109,11 +125,7 @@ fun SplashScreen(onFinish:(()->Unit)? = null) {
         )
         Greeting2()
     }
-
 }
-
-
-
 
 @Preview(showBackground = true)
 @Composable

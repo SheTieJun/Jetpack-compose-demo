@@ -1,11 +1,15 @@
 package me.shetj.composekit.utils
 
-/**
- * 
- * <b>@author：</b> shetj<br>
- * <b>@createTime：</b> 2021/12/20<br>
- * <b>@email：</b> 375105540@qq.com<br>
- * <b>@describe</b>  <br>
- */
-class AppKit {
+import android.content.Context
+import android.widget.Toast
+import androidx.compose.runtime.Composable
+import me.shetj.composekit.ui.theme.getContext
+
+@Composable
+fun ShowToast(string: String) {
+    Toast.makeText(getContext(), string, Toast.LENGTH_SHORT).show()
+}
+
+fun Context.showToast(string: String) {
+    Toast.makeText(this, string, Toast.LENGTH_SHORT).show()
 }
