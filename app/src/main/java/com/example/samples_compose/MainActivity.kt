@@ -28,6 +28,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.animation.rememberSplineBasedDecay
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -69,6 +70,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.MutableLiveData
@@ -101,6 +103,14 @@ class MainActivity : ComponentActivity() {
         Color(0xFFd0fff8.toInt())
     )
 
+    val map = HashMap<String, List<Color>>().apply {
+        put("0xFFffd7d7", colors)
+        put("0xFFffe9d6", colors)
+        put("0xFFfffbd0", colors)
+        put("0xFFd0fff8", colors)
+    }
+
+    @ExperimentalFoundationApi
     @ExperimentalPermissionsApi
     @ExperimentalMaterial3Api
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,7 +119,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ProvideWindowInsets { // 必须使用，否则无法 Modifier.navigationBarsPadding() 会没有效果
 
-                val isDarkModel:Boolean by isDark.observeAsState(isSystemInDarkTheme())
+                val isDarkModel: Boolean by isDark.observeAsState(isSystemInDarkTheme())
 
                 RedTheme(isDarkModel) {
 
@@ -133,6 +143,8 @@ class MainActivity : ComponentActivity() {
                     val stateOfOpen = remember { mutableStateOf(false) }
 
                     var openDialog by stateOfOpen
+
+                    val bgColor = MaterialTheme.colorScheme.background
 
                     if (openDialog) {
                         ShowDialog(stateOfOpen)
@@ -204,11 +216,13 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                         },
-                        drawerContainerColor = MaterialTheme.colorScheme.background,
-                        drawerContentColor = contentColorFor(backgroundColor = MaterialTheme.colorScheme.background),
+
+
+                        drawerContainerColor = bgColor,
+                        drawerContentColor = contentColorFor(backgroundColor = bgColor),
                         content = {
                             Scaffold(
-                                containerColor = MaterialTheme.colorScheme.background,
+                                containerColor = bgColor,
                                 topBar = {
                                     MediumTopAppBar(
                                         modifier = Modifier.statusBarsPadding(),
@@ -223,7 +237,7 @@ class MainActivity : ComponentActivity() {
                                         },
                                         actions = {
                                             IconButton(onClick = {
-                                                isDark.postValue(!(isDark.value?:false))
+                                                isDark.postValue(!(isDark.value ?: false))
                                             }) {
                                                 Icon(
                                                     imageVector = Filled.ChangeCircle,
@@ -232,10 +246,11 @@ class MainActivity : ComponentActivity() {
                                             }
                                         },
                                         colors = largeTopAppBarColors(
-                                            containerColor = MaterialTheme.colorScheme.background,
-                                            titleContentColor = contentColorFor(backgroundColor = MaterialTheme.colorScheme.background),
-                                            actionIconContentColor = contentColorFor(backgroundColor = MaterialTheme.colorScheme.background),
-                                            navigationIconContentColor = contentColorFor(MaterialTheme.colorScheme.background)
+                                            containerColor = bgColor,
+                                            titleContentColor = contentColorFor(backgroundColor = bgColor),
+                                            actionIconContentColor = contentColorFor(backgroundColor = bgColor),
+                                            navigationIconContentColor = contentColorFor(bgColor),
+                                            scrolledContainerColor = bgColor
                                         ),
                                         scrollBehavior = scrollBehavior
                                     )
@@ -269,14 +284,32 @@ class MainActivity : ComponentActivity() {
                                         }
                                     }) {
                                     LazyColumn(contentPadding = innerPadding) {
-                                        items(count = 100) {
-                                            Box(
-                                                Modifier
-                                                    .fillMaxWidth()
-                                                    .height(50.dp)
-                                                    .background(colors[it % colors.size])
-                                            )
+                                        map.forEach {
+                                            stickyHeader {
+                                                Box(
+                                                    Modifier
+                                                        .fillMaxWidth()
+                                                        .height(50.dp)
+                                                        .background(MaterialTheme.colorScheme.error)
+                                                ) {
+                                                    Text(
+                                                        text = it.key,
+                                                        textAlign = TextAlign.Center,
+                                                        color = contentColorFor(MaterialTheme.colorScheme.error)
+                                                    )
+                                                }
+                                            }
+
+                                            items(count = it.value.size) {
+                                                Box(
+                                                    Modifier
+                                                        .fillMaxWidth()
+                                                        .height(50.dp)
+                                                        .background(colors[it % colors.size])
+                                                )
+                                            }
                                         }
+
                                     }
                                 }
                             }
