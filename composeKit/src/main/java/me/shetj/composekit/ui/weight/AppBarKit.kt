@@ -24,21 +24,15 @@
 package me.shetj.composekit.ui.weight
 
 import android.Manifest.permission
-import android.content.Intent
-import android.net.Uri
-import android.provider.Settings
 import androidx.compose.animation.rememberSplineBasedDecay
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Camera
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
@@ -73,14 +67,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat.startActivity
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.rememberPermissionState
 import kotlinx.coroutines.launch
-import me.shetj.composekit.ui.theme.getContext
 
 /**
  * 用来存放常用的top_bar
@@ -165,7 +157,7 @@ fun MidAppBar() {
     )
 }
 
-@ExperimentalPermissionsApi
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun ShowDialog(openDialog: MutableState<Boolean>) {
 

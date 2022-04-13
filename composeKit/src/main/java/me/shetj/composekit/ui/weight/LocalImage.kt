@@ -41,7 +41,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 /**
- * [me.shetj.composekit.ui.preview.PreImage.kt]
+ * [me.shetj.composekit.ui.preview.PreImage]
  */
 
 @Composable

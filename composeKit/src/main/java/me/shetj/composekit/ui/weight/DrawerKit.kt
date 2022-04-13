@@ -8,9 +8,14 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.magnifier
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ButtonDefaults.textButtonColors
+import androidx.compose.material.icons.Icons.Filled
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -23,7 +28,28 @@ import androidx.compose.ui.graphics.Color.Companion
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
+import me.shetj.composekit.ui.theme.BlueTheme
+import me.shetj.composekit.ui.theme.YellowTheme
+
+
+@Preview
+@Composable
+fun showDrawerButton(){
+    YellowTheme() {
+        DrawerButton(
+            icon = Filled.Menu,
+            label = "更多",
+            isSelected = true,
+            action = {
+
+            }
+        )
+    }
+
+}
 
 @Composable
 fun DrawerButton(
@@ -46,24 +72,27 @@ fun DrawerButton(
     }
 
     val surfaceModifier = modifier
-        .padding(start = 8.dp, top = 8.dp, end = 8.dp)
+        .padding(start = 16.dp,  end = 24.dp)
         .fillMaxWidth()
-        .height(45.dp)
+        .height(56.dp)
     Surface(
         modifier = surfaceModifier,
         color = backgroundColor,
-        shape = RoundedCornerShape(5.dp)
+        shape = RoundedCornerShape(28.dp)
     ) {
         TextButton(
             onClick = action,
             modifier = Modifier
-                .fillMaxWidth().fillMaxHeight(),
+                .fillMaxWidth()
+                .fillMaxHeight(),
             shape = RoundedCornerShape(5.dp)
         ) {
             Row(
                 horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth().fillMaxHeight()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
             ) {
                 NavigationIcon(
                     icon = icon,
@@ -71,11 +100,18 @@ fun DrawerButton(
                     contentDescription = null, // decorative
                     tintColor = textIconColor
                 )
-                Spacer(Modifier.width(16.dp))
+                Spacer(Modifier.width(12.dp))
                 Text(
                     text = label,
                     style = MaterialTheme.typography.bodyMedium,
                     color = textIconColor
+                )
+                Text(
+                    modifier = Modifier
+                        .wrapContentWidth(Alignment.End),
+                    style =  MaterialTheme.typography.bodyMedium,
+                    color = textIconColor,
+                    text = "text2"
                 )
             }
         }
@@ -103,7 +139,9 @@ fun NavigationIcon(
     }
 
     Image(
-        modifier = modifier,
+        modifier = modifier
+            .width(24.dp)
+            .height(24.dp),
         imageVector = icon,
         contentDescription = contentDescription,
         contentScale = ContentScale.Inside,

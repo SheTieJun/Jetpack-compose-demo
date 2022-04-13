@@ -51,12 +51,15 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
     api "io.coil-kt:coil-compose:1.4.0" //图片加载
+
+    // Tooling support (Previews, etc.)
     api "androidx.compose.ui:ui:$compose_version"
     api "androidx.compose.material:material:$compose_version"
     api "androidx.compose.ui:ui-tooling-preview:$compose_version"
     api 'androidx.activity:activity-compose:1.4.0'
     api "androidx.navigation:navigation-compose:2.4.0-beta02"
     api "androidx.compose.material:material-icons-extended:$compose_version"
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
     api "androidx.compose.foundation:foundation:$compose_version"
     api "androidx.compose.animation:animation:$compose_version"
     api "androidx.compose.runtime:runtime:$compose_version"
@@ -73,7 +76,7 @@ dependencies {
     api "com.google.accompanist:accompanist-flowlayout:$accompanist_version"//瀑布流
     api "com.google.accompanist:accompanist-permissions:$accompanist_version"//权限处理
 
-    api "androidx.compose.material3:material3:1.0.0-alpha02"
+    api "androidx.compose.material3:material3:1.0.0-alpha07"
 
     implementation "androidx.window:window:1.0.0-beta04"
 }
