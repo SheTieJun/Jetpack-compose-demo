@@ -41,7 +41,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
@@ -50,7 +49,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
-import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.delay
 import me.shetj.composekit.ui.theme.RedTheme
@@ -67,11 +65,9 @@ class Splash : AppCompatActivity() {
             systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = true)
 
             // A surface container using the 'background' color from the theme
-            ProvideWindowInsets(consumeWindowInsets = true) {
-                Surface(color = MaterialTheme.colorScheme.background) {
-                    SplashScreen {
-                        finish()
-                    }
+            Surface(color = MaterialTheme.colorScheme.background) {
+                SplashScreen {
+                    finish()
                 }
             }
         }

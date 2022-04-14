@@ -69,9 +69,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.PermissionState
-import com.google.accompanist.permissions.rememberPermissionState
+import com.google.accompanist.permissions.*
 import kotlinx.coroutines.launch
 
 /**
@@ -165,7 +163,7 @@ fun ShowDialog(openDialog: MutableState<Boolean>) {
         permission.CAMERA
     )
 
-    if (cameraPermissionState.hasPermission) {
+    if (cameraPermissionState.status.isGranted) {
         return
     }
 
@@ -178,16 +176,18 @@ fun ShowDialog(openDialog: MutableState<Boolean>) {
             Text(text = "获取权限")
         },
         text = {
-            if (cameraPermissionState.shouldShowRationale ||
-                !cameraPermissionState.permissionRequested
-            ) {
-                Text("The camera is important for this app. Please grant the permission.")
+            val textToShow = if (cameraPermissionState.status.shouldShowRationale) {
+                // If the user has denied the permission but the rationale can be shown,
+                // then gently explain why the app requires this permission
+                "The camera is important for this app. Please grant the permission."
             } else {
-                Text(
-                    "Camera permission denied. See this FAQ with information about why we " +
-                            "need this permission. Please, grant us access on the Settings screen."
-                )
+                // If it's the first time the user lands on this feature, or the user
+                // doesn't want to be asked again for this permission, explain that the
+                // permission is required
+                "Camera permission required for this feature to be available. " +
+                        "Please grant the permission"
             }
+            Text(textToShow)
         },
         confirmButton = {
             TextButton(

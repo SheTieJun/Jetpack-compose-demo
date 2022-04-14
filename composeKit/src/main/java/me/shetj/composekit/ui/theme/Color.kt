@@ -25,6 +25,7 @@ package me.shetj.composekit.ui.theme
 
 import androidx.compose.material.Colors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 
@@ -63,6 +64,7 @@ val Red30 = Color(red = 140, green = 29, blue = 24)
 val Red40 = Color(red = 179, green = 38, blue = 30)
 val Red80 = Color(red = 242, green = 184, blue = 181)
 val Red90 = Color(red = 249, green = 222, blue = 220)
+
 
 @Composable
 fun Colors.compositedOnSurface(alpha: Float): Color {
