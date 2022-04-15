@@ -38,6 +38,17 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import me.shetj.composekit.R
+import me.shetj.composekit.ui.theme.AppTheme.DynamicDark
+import me.shetj.composekit.ui.theme.AppTheme.DynamicLight
+
+
+enum class AppTheme {
+    DynamicDark, DynamicLight,
+    GreenThemeLight, GreenThemeDark,
+    YellowThemeLight, YellowThemeDark,
+    BlueThemeLight, BlueThemeDark,
+    RedThemeLight, RedThemeDark
+}
 
 @Composable
 fun DynamicTheme(
@@ -177,7 +188,7 @@ fun DefTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    DynamicTheme(darkTheme,content)
+    DynamicTheme(darkTheme, content)
 }
 
 
@@ -200,5 +211,24 @@ private fun BaseTheme(
     }
 }
 
+
+@Composable
+fun SAppTheme(
+    darkTheme: AppTheme,
+    content: @Composable () -> Unit
+) {
+    when (darkTheme) {
+        DynamicDark -> DynamicTheme(darkTheme = true, content)
+        DynamicLight -> DynamicTheme(darkTheme = false, content)
+        AppTheme.GreenThemeLight -> GreenTheme(false, content)
+        AppTheme.GreenThemeDark -> GreenTheme(true, content)
+        AppTheme.YellowThemeLight -> YellowTheme(false, content)
+        AppTheme.YellowThemeDark -> YellowTheme(true, content)
+        AppTheme.BlueThemeLight -> BlueTheme(false, content)
+        AppTheme.BlueThemeDark -> BlueTheme(true, content)
+        AppTheme.RedThemeLight -> RedTheme(false, content)
+        AppTheme.RedThemeDark -> RedTheme(true, content)
+    }
+}
 
 //      LocalOverScrollConfiguration provides null, // == android:overScrollMode="never"

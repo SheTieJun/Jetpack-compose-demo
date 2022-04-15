@@ -71,6 +71,7 @@ fun DemoApp() {
 }
 
 
+@ExperimentalMaterial3Api
 fun NavGraphBuilder.DemoAppNavGraph(
     onSnackSelected: (Long, NavBackStackEntry) -> Unit,
     upPress: () -> Unit

@@ -8,8 +8,7 @@ import androidx.lifecycle.MutableLiveData
 object BadgesManager {
 
 
-    val netBadgesLiveData get() = MutableLiveData(0)
-
+    val netBadgesLiveData = MutableLiveData(0)
 
     fun addBadges() {
         netBadgesLiveData.postValue((netBadgesLiveData.value ?: 0) + 1)

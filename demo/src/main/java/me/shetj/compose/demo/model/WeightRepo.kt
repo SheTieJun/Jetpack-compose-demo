@@ -23,6 +23,11 @@ data class WeightModel(
     val name: String,
 )
 
+private val images = WeightModel(
+    id = 0L,
+    name = "Images",
+)
+
 
 private val button = WeightModel(
     id = 1L,
@@ -104,6 +109,7 @@ private val topappbar = button.copy(
 )
 
 val weightCollection = listOf(
+    images,
     button,
     bottomappbar,
     topappbar,

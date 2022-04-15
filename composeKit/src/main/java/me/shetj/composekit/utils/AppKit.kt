@@ -5,6 +5,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.MutableLiveData
+import me.shetj.composekit.ui.theme.AppTheme
+import me.shetj.composekit.ui.theme.AppTheme.DynamicLight
 import me.shetj.composekit.ui.theme.getContext
 
 @Composable
@@ -21,3 +23,5 @@ fun String.log(){
 }
 
 var isDark: MutableLiveData<Boolean> = MutableLiveData()
+
+var appTheme: MutableLiveData<AppTheme> = MutableLiveData(DynamicLight)
