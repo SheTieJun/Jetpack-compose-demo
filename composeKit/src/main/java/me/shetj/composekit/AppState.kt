@@ -78,7 +78,7 @@ class JetsnackAppState(
             snackbarManager.messages.collect { currentMessages ->
                 if (currentMessages.isNotEmpty()) {
                     val message = currentMessages[0]
-                    val text = resources.getText(message.messageId)
+                    val text = message.message
 
                     // Display the snackbar on the screen. `showSnackbar` is a function
                     // that suspends until the snackbar disappears from the screen
@@ -93,15 +93,6 @@ class JetsnackAppState(
     // ----------------------------------------------------------
     // BottomBar state source of truth
     // ----------------------------------------------------------
-
-    val bottomBarTabs = HomeSections.values()
-    private val bottomBarRoutes = bottomBarTabs.map { it.route }
-
-    // Reading this attribute will cause recompositions when the bottom bar needs shown, or not.
-    // Not all routes need to show the bottom bar.
-    val shouldShowBottomBar: Boolean
-        @Composable get() = navController
-            .currentBackStackEntryAsState().value?.destination?.route in bottomBarRoutes
 
     // ----------------------------------------------------------
     // Navigation state source of truth

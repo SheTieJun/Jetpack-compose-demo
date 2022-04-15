@@ -51,3 +51,4 @@ val systemUiController = rememberSystemUiController()
 systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = true)
 ```
 
+3. snackbarHost
