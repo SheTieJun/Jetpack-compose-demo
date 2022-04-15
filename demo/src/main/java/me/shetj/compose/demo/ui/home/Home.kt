@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,13 +19,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import me.shetj.compose.demo.ui.home_weidget.WidgetUI
+import me.shetj.compose.demo.ui.home_weight.WidgetUI
 
 fun NavGraphBuilder.addHomeGraph(
     onSnackSelected: (Long, NavBackStackEntry) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    composable(DemoHomeSections.WIDGET.route) { from ->
+    composable(DemoHomeSections.WEIGHT.route) { from ->
         WidgetUI(modifier)
     }
     composable(DemoHomeSections.FUNC.route) { from ->

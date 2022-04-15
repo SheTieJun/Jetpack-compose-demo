@@ -1,10 +1,13 @@
 package me.shetj.compose.demo
 
 import android.content.res.Resources
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
@@ -23,13 +26,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import me.shetj.compose.demo.ui.home.DemoHomeSections
 import me.shetj.composekit.model.SnackbarManager
+import me.shetj.composekit.utils.isDark
 
 
 object DemoDestinations {
 
     const val HOME = "home"
 
-    const val WIDGET_ROUTE = "widget"
+    const val WEIGHT_ROUTE = "Weight"
     const val FUNC_ROUTE = "Func"
     const val NETWORK_ROUTER = "NetWork"
     const val OTHER_ROUTER = "other"
@@ -63,7 +67,7 @@ fun rememberDemoAppState(
 //标记稳定
 @Stable
 class DemoAppState(
-    private val systemUiController: SystemUiController,
+    val systemUiController: SystemUiController,
     val navController: NavHostController,
     val snackbarHostState: SnackbarHostState,
     private val snackbarManager: SnackbarManager,

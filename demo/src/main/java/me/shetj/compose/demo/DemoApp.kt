@@ -1,5 +1,6 @@
 package me.shetj.compose.demo
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,6 +10,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
@@ -17,17 +20,24 @@ import androidx.navigation.navigation
 import me.shetj.compose.demo.ui.components.BottomBar
 import me.shetj.compose.demo.ui.home.DemoHomeSections
 import me.shetj.compose.demo.ui.home.addHomeGraph
-import me.shetj.composekit.ui.theme.BlueTheme
+import me.shetj.composekit.ui.theme.DefTheme
 import me.shetj.composekit.ui.weight.DemoSnackbar
+import me.shetj.composekit.utils.isDark
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DemoApp() {
 
-    val appState = rememberDemoAppState()
 
-    BlueTheme {
+
+    //用来切换暗黑模式
+    val isDarkModel: Boolean by isDark.observeAsState(isSystemInDarkTheme())
+
+    DefTheme(isDarkModel) {
         // A surface container using the 'background' color from the theme
+        val appState = rememberDemoAppState()
+        appState.systemUiController.statusBarDarkContentEnabled = !isDarkModel
+
         Scaffold(
             modifier = Modifier
                 .fillMaxHeight()
@@ -69,8 +79,8 @@ fun NavGraphBuilder.DemoAppNavGraph(
      * 导航嵌套,home 下面[DemoHomeSections]
      */
     navigation(
-        route =  DemoDestinations.HOME,
-        startDestination = DemoHomeSections.WIDGET.route
+        route = DemoDestinations.HOME,
+        startDestination = DemoHomeSections.WEIGHT.route
     ) {
         addHomeGraph(onSnackSelected)
     }

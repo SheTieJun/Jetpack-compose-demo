@@ -25,6 +25,7 @@ package me.shetj.composekit.ui.theme
 
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
@@ -37,27 +38,21 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import me.shetj.composekit.R
-import me.shetj.composekit.utils.log
 
 @Composable
 fun DynamicTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colors = if (darkTheme) {
-        if (VERSION.SDK_INT >= VERSION_CODES.S) {
-            dynamicDarkColorScheme(LocalContext.current)
-        } else {
-            darkColorScheme()
-        }
-    } else {
-        if (VERSION.SDK_INT >= VERSION_CODES.S) {
-            dynamicLightColorScheme(LocalContext.current)
-        } else {
-            lightColorScheme()
-        }
+
+    val dynamicColor = VERSION.SDK_INT >= VERSION_CODES.S
+    val colorScheme = when {
+        dynamicColor && darkTheme -> dynamicDarkColorScheme(LocalContext.current)
+        dynamicColor && !darkTheme -> dynamicLightColorScheme(LocalContext.current)
+        darkTheme -> darkColorScheme()
+        else -> lightColorScheme()
     }
-    BaseTheme(darkTheme, colors, content)
+    BaseTheme(darkTheme, colorScheme, content)
 }
 
 private val GreenThemeLight = lightColorScheme(
@@ -145,7 +140,7 @@ private val RedThemeLight = lightColorScheme(
     primary = Red40,
     primaryContainer = Red90,
     onPrimary = Red100,
-    onPrimaryContainer = Blue10,
+    onPrimaryContainer = Red30,
 )
 
 private val RedThemeDark = darkColorScheme(
@@ -176,6 +171,16 @@ private val LightImages = Images(lockupLogo = R.drawable.ic_launcher_background)
 
 private val DarkImages = Images(lockupLogo = R.drawable.ic_launcher_background)
 
+
+@Composable
+fun DefTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    DynamicTheme(darkTheme,content)
+}
+
+
 @Composable
 private fun BaseTheme(
     darkTheme: Boolean,
@@ -194,3 +199,6 @@ private fun BaseTheme(
         )
     }
 }
+
+
+//      LocalOverScrollConfiguration provides null, // == android:overScrollMode="never"

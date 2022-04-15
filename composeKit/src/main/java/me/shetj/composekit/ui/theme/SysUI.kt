@@ -30,25 +30,6 @@ import androidx.compose.ui.platform.LocalContext
 import com.google.accompanist.systemuicontroller.SystemUiController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
-/**
- *
-```
-Modifier.statusBarsPadding()
-Modifier.navigationBarsPadding()
-Modifier.systemBarsPadding()
-Modifier.imePadding()
-Modifier.navigationBarsWithImePadding()
-Modifier.cutoutPadding()
-```
-
-```
-Modifier.statusBarsHeight()
-Modifier.navigationBarsHeight()
-Modifier.navigationBarsWidth()
-```
- */
-
-
 
 @Composable
 fun getContext(): Context {

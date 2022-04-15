@@ -52,3 +52,10 @@ systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = true)
 ```
 
 3. snackbarHost
+
+4. 点击
+```kotlin
+Modifier.clickable {
+    SnackbarManager.showMessage(item.name)
+}
+```
