@@ -49,13 +49,13 @@ fun NetworkImage(
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Crop,
     placeholderColor: Color? = MaterialTheme.colors.compositedOnSurface(0.2f),
-    @DrawableRes drawableResId: Int ? = null
+    @DrawableRes placeholderId: Int ? = null
 ) {
     Box(modifier) {
         val painter = rememberImagePainter(
             data = url,
             builder = {
-                drawableResId?.let {
+                placeholderId?.let {
                     placeholder(drawableResId = it)
                 }
             }

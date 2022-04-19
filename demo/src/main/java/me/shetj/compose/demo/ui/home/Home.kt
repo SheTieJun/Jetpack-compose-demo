@@ -23,11 +23,11 @@ import me.shetj.compose.demo.ui.home_weight.WidgetUI
 
 @ExperimentalMaterial3Api
 fun NavGraphBuilder.addHomeGraph(
-    onSnackSelected: (Long, NavBackStackEntry) -> Unit,
+    onSnackSelected: (String, NavBackStackEntry) -> Unit,
     modifier: Modifier = Modifier
 ) {
     composable(DemoHomeSections.WEIGHT.route) { from ->
-        WidgetUI(modifier)
+        WidgetUI(modifier,onSnackSelected,from)
     }
     composable(DemoHomeSections.FUNC.route) { from ->
         FuncUI(modifier)

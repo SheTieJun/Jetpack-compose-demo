@@ -29,26 +29,35 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
 import me.shetj.compose.demo.model.BadgesManager
 import me.shetj.compose.demo.model.WeightRepo
+import me.shetj.compose.demo.ui.home.BASE_WEIGHT_ROUTER
+import me.shetj.compose.demo.ui.home.DemoWeightSections
 import me.shetj.composekit.utils.isDark
 
 
 @ExperimentalMaterial3Api
 @Composable
-fun WidgetUI(modifier: Modifier) {
+fun WidgetUI(modifier: Modifier, onSnackSelected: (String, NavBackStackEntry) -> Unit, from: NavBackStackEntry) {
     Scaffold(modifier = modifier.fillMaxSize(),
         topBar = {
-            DemoTopBar()
+            DemoTopBar("Compose Components")
         }) { padding ->
 
-        WidgetList(padding)
+        WidgetList(padding,onSnackSelected,from)
     }
 
 }
 
 @Composable
-fun WidgetList(padding: PaddingValues) {
+fun WidgetList(
+    padding: PaddingValues,
+    onSnackSelected: (String, NavBackStackEntry) -> Unit,
+    from: NavBackStackEntry
+) {
     val weights = WeightRepo.getWeights()
     LazyColumn(contentPadding = padding) {
         items(items = weights, key = { it.id }, itemContent = { item ->
@@ -62,7 +71,7 @@ fun WidgetList(padding: PaddingValues) {
                                 BadgesManager.addBadges()
                             }
                             else -> {
-
+                                onSnackSelected.invoke("$BASE_WEIGHT_ROUTER/${item.name}",from)
                             }
                         }
                     },
@@ -77,7 +86,7 @@ fun WidgetList(padding: PaddingValues) {
 
 @ExperimentalMaterial3Api
 @Composable
-fun DemoTopBar() {
+fun DemoTopBar(title: String) {
 
     val bgColor = MaterialTheme.colorScheme.background
     val decayAnimationSpec = rememberSplineBasedDecay<Float>()
@@ -92,7 +101,7 @@ fun DemoTopBar() {
                     imageVector = Filled.HomeMini,
                     contentDescription = "change Theme",
                 )
-                Text("Compose Components")
+                Text(title)
             }
         },
         navigationIcon = {
@@ -117,4 +126,14 @@ fun DemoTopBar() {
         ),
         scrollBehavior = scrollBehavior
     )
+}
+
+
+@ExperimentalMaterial3Api
+fun NavGraphBuilder.addWeightGraph(modifier: Modifier = Modifier) {
+    composable(DemoWeightSections.IMAGES.route) { from ->
+        ImageUI(modifier)
+    }
+//    composable(DemoWeightSections.BUTTON.route) { from ->
+//    }
 }

@@ -1,13 +1,10 @@
 package me.shetj.compose.demo
 
 import android.content.res.Resources
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.Stable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
@@ -26,7 +23,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import me.shetj.compose.demo.ui.home.DemoHomeSections
 import me.shetj.composekit.model.SnackbarManager
-import me.shetj.composekit.utils.isDark
 
 
 object DemoDestinations {
@@ -122,6 +118,14 @@ class DemoAppState(
         }
     }
 
+    fun navigateByRouter(route: String, from: NavBackStackEntry) {
+        // In order to discard duplicated navigation events, we check the Lifecycle
+        if (from.lifecycleIsResumed()) {
+            navController.navigate(route) {
+                launchSingleTop
+            }
+        }
+    }
 
     fun upPress() {
         navController.navigateUp()

@@ -18,8 +18,11 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.navigation
 import me.shetj.compose.demo.ui.components.BottomBar
+import me.shetj.compose.demo.ui.home.BASE_WEIGHT_ROUTER
 import me.shetj.compose.demo.ui.home.DemoHomeSections
+import me.shetj.compose.demo.ui.home.DemoWeightSections
 import me.shetj.compose.demo.ui.home.addHomeGraph
+import me.shetj.compose.demo.ui.home_weight.addWeightGraph
 import me.shetj.composekit.ui.theme.DefTheme
 import me.shetj.composekit.ui.weight.DemoSnackbar
 import me.shetj.composekit.utils.isDark
@@ -27,7 +30,6 @@ import me.shetj.composekit.utils.isDark
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DemoApp() {
-
 
 
     //用来切换暗黑模式
@@ -62,8 +64,8 @@ fun DemoApp() {
                 startDestination = DemoDestinations.HOME,
                 modifier = Modifier.padding(innerPaddingModifier)
             ) {
-                DemoAppNavGraph(onSnackSelected = { long, stack ->
-
+                DemoAppNavGraph(onSnackSelected = { router, stack ->
+                    appState.navigateByRouter(router,stack)
                 }, upPress = appState::upPress)
             }
         }
@@ -73,7 +75,7 @@ fun DemoApp() {
 
 @ExperimentalMaterial3Api
 fun NavGraphBuilder.DemoAppNavGraph(
-    onSnackSelected: (Long, NavBackStackEntry) -> Unit,
+    onSnackSelected: (String, NavBackStackEntry) -> Unit,
     upPress: () -> Unit
 ) {
     /**
@@ -84,6 +86,9 @@ fun NavGraphBuilder.DemoAppNavGraph(
         startDestination = DemoHomeSections.WEIGHT.route
     ) {
         addHomeGraph(onSnackSelected)
+        addWeightGraph()
     }
 }
+
+
 

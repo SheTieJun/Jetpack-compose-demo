@@ -28,3 +28,17 @@ enum class DemoHomeSections(
 }
 
 fun DemoHomeSections.isNewWork() = route == NETWORK.route
+
+
+const val BASE_WEIGHT_ROUTER = "home/${DemoDestinations.WEIGHT_ROUTE}"
+
+enum class DemoWeightSections(
+    @StringRes val title: Int,
+    val icon: ImageVector,
+    val selectIcon:ImageVector,
+    val route: String
+) {
+    IMAGES(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/Images"),
+
+    BUTTON(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/Buttons"),
+}

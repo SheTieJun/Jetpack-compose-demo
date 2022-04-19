@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.DefaultAlpha
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 /**
@@ -82,5 +83,20 @@ fun CirImage(
                 color = borderColor,
                 shape = RoundedCornerShape(50)
             )
+    )
+}
+
+@Composable
+fun CornerImage(
+    @DrawableRes res: Int,
+    modifier: Modifier,
+    cornerRadius: Dp = 4.dp,
+) {
+    Image(
+        painter = painterResource(id = res),
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = modifier
+            .clip(shape = RoundedCornerShape(cornerRadius))
     )
 }
