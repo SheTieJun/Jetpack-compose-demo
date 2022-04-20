@@ -18,9 +18,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.navigation
 import me.shetj.compose.demo.ui.components.BottomBar
-import me.shetj.compose.demo.ui.home.BASE_WEIGHT_ROUTER
 import me.shetj.compose.demo.ui.home.DemoHomeSections
-import me.shetj.compose.demo.ui.home.DemoWeightSections
 import me.shetj.compose.demo.ui.home.addHomeGraph
 import me.shetj.compose.demo.ui.home_weight.addWeightGraph
 import me.shetj.composekit.ui.theme.DefTheme
@@ -64,7 +62,7 @@ fun DemoApp() {
                 startDestination = DemoDestinations.HOME,
                 modifier = Modifier.padding(innerPaddingModifier)
             ) {
-                DemoAppNavGraph(onSnackSelected = { router, stack ->
+                DemoAppNavGraph(appState,onSnackSelected = { router, stack ->
                     appState.navigateByRouter(router,stack)
                 }, upPress = appState::upPress)
             }
@@ -75,6 +73,7 @@ fun DemoApp() {
 
 @ExperimentalMaterial3Api
 fun NavGraphBuilder.DemoAppNavGraph(
+    appState: DemoAppState,
     onSnackSelected: (String, NavBackStackEntry) -> Unit,
     upPress: () -> Unit
 ) {
@@ -86,7 +85,7 @@ fun NavGraphBuilder.DemoAppNavGraph(
         startDestination = DemoHomeSections.WEIGHT.route
     ) {
         addHomeGraph(onSnackSelected)
-        addWeightGraph()
+        addWeightGraph(appState)
     }
 }
 

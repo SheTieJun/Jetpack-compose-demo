@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons.Filled
 import androidx.compose.material.icons.filled.ChangeCircle
 import androidx.compose.material.icons.filled.HomeMini
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -22,9 +23,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,11 +36,29 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import me.shetj.compose.demo.DemoAppState
 import me.shetj.compose.demo.model.BadgesManager
 import me.shetj.compose.demo.model.WeightRepo
 import me.shetj.compose.demo.ui.home.BASE_WEIGHT_ROUTER
 import me.shetj.compose.demo.ui.home.DemoWeightSections
 import me.shetj.composekit.utils.isDark
+
+
+@ExperimentalMaterial3Api
+fun NavGraphBuilder.addWeightGraph(appState: DemoAppState ,modifier: Modifier = Modifier) {
+    composable(DemoWeightSections.IMAGES.route) { from ->
+        ImageUI(modifier)
+    }
+    composable(DemoWeightSections.BUTTON.route) { from ->
+        ButtonUI(modifier)
+    }
+    composable(DemoWeightSections.CARDS.route){
+        CardUI(modifier)
+    }
+    composable(DemoWeightSections.BOTTOMAPPBAR.route){
+        BottomAPPBar(modifier)
+    }
+}
 
 
 @ExperimentalMaterial3Api
@@ -49,7 +71,6 @@ fun WidgetUI(modifier: Modifier, onSnackSelected: (String, NavBackStackEntry) ->
 
         WidgetList(padding,onSnackSelected,from)
     }
-
 }
 
 @Composable
@@ -59,6 +80,13 @@ fun WidgetList(
     from: NavBackStackEntry
 ) {
     val weights = WeightRepo.getWeights()
+    val map = DemoWeightSections.values().map { it.route }
+    val isShow   =  remember {
+        mutableStateOf(false)
+    }
+    if (isShow.value){
+        ShowTipDialog(isShow)
+    }
     LazyColumn(contentPadding = padding) {
         items(items = weights, key = { it.id }, itemContent = { item ->
             Box(
@@ -71,7 +99,13 @@ fun WidgetList(
                                 BadgesManager.addBadges()
                             }
                             else -> {
-                                onSnackSelected.invoke("$BASE_WEIGHT_ROUTER/${item.name}",from)
+                                val router = "$BASE_WEIGHT_ROUTER/${item.name}"
+                                val contains = map.contains(router)
+                                if (contains) {
+                                    onSnackSelected.invoke(router, from)
+                                } else {
+                                    isShow.value = true
+                                }
                             }
                         }
                     },
@@ -129,11 +163,27 @@ fun DemoTopBar(title: String) {
 }
 
 
-@ExperimentalMaterial3Api
-fun NavGraphBuilder.addWeightGraph(modifier: Modifier = Modifier) {
-    composable(DemoWeightSections.IMAGES.route) { from ->
-        ImageUI(modifier)
-    }
-//    composable(DemoWeightSections.BUTTON.route) { from ->
-//    }
+@Composable
+fun ShowTipDialog(isShow: MutableState<Boolean>) {
+    AlertDialog(
+        onDismissRequest = {
+            isShow.value = false
+        },
+        title = {
+            Text(text = "Compose Components")
+        },
+        text = {
+            val textToShow = "当前功能暂未完成，敬请期待"
+            Text(textToShow)
+        },
+        confirmButton = {
+            TextButton(
+                onClick = {
+                    isShow.value = false
+                }
+            ) {
+                Text("TODO")
+            }
+        }
+    )
 }

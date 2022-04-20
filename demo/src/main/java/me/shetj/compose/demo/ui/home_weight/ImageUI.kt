@@ -1,11 +1,14 @@
 package me.shetj.compose.demo.ui.home_weight
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,7 +28,10 @@ fun ImageUI(modifier: Modifier = Modifier) {
         topBar = {
         DemoTopBar("Images")
     }) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier
+            .background(MaterialTheme.colorScheme.onSecondaryContainer)
+            .fillMaxSize()
+            .padding(start = 15.dp)) {
 
             //1. 圆image
 
@@ -46,7 +52,9 @@ fun ImageUI(modifier: Modifier = Modifier) {
             NetworkImage(
                 url = "https://dev-1253442168.cosgz.myqcloud.com/avatar/9542e9b715eab88972044e55ecdc81e2.jpeg",
                 contentDescription = "网络图片",
-                modifier = Modifier.width(100.dp).height(100.dp)
+                modifier = Modifier
+                    .width(100.dp)
+                    .height(100.dp)
             )
             Spacer(Modifier.height(16.dp))
             //3.本地资源图片

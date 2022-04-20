@@ -37,7 +37,7 @@ private val button = WeightModel(
 
 private val bottomappbar = button.copy(
     id = 2L,
-    name = "Bottom app bar",
+    name = "BottomAppBar",
 )
 
 
@@ -64,7 +64,7 @@ private val dialogs = button.copy(
 
 private val progressindicators = button.copy(
     id = 7L,
-    name = "Progress indicators",
+    name = "ProgressIndicators",
 )
 
 private val tabs = button.copy(
@@ -90,17 +90,17 @@ private val badges = button.copy(
 
 private val navigationbar = button.copy(
     id = 12L,
-    name = "Navigation bar",
+    name = "NavigationBar",
 )
 
 private val radiobuttons = button.copy(
     id = 13L,
-    name = "Radio buttons",
+    name = "RadioButtons",
 )
 
 private val textfields = button.copy(
     id = 14L,
-    name = "Text fields",
+    name = "TextFields",
 )
 
 private val topappbar = button.copy(
