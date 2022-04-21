@@ -108,6 +108,11 @@ private val topappbar = button.copy(
     name = "TopAppBar",
 )
 
+private val NavigationDrawer = button.copy(
+    id = 16L,
+    name = "NavigationDrawer",
+)
+
 val weightCollection = listOf(
     images,
     button,
@@ -124,5 +129,6 @@ val weightCollection = listOf(
     radiobuttons,
     checkboxes,
     fab,
-    textfields
+    textfields,
+    NavigationDrawer
 )

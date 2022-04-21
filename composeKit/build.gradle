@@ -77,13 +77,15 @@ dependencies {
 
 
     // If you're using Material, use accompanist-placeholder-material
-    implementation "com.google.accompanist:accompanist-placeholder-material:$accompanist_version"
-    implementation "com.google.accompanist:accompanist-placeholder:$accompanist_version"
-    implementation "com.google.accompanist:accompanist-navigation-material:$accompanist_version"
-    implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist_version"
-    implementation "com.google.accompanist:accompanist-webview:$accompanist_version"
+    api "com.google.accompanist:accompanist-placeholder-material:$accompanist_version"
+    api "com.google.accompanist:accompanist-placeholder:$accompanist_version"
+    api "com.google.accompanist:accompanist-navigation-material:$accompanist_version"
+    api "com.google.accompanist:accompanist-navigation-animation:$accompanist_version"
+    api "com.google.accompanist:accompanist-webview:$accompanist_version"
 
     api "androidx.compose.material3:material3:1.0.0-alpha07"
 
     implementation "androidx.window:window:1.0.0-beta04"
+
+    api "androidx.core:core-splashscreen:1.0.0-beta02"
 }

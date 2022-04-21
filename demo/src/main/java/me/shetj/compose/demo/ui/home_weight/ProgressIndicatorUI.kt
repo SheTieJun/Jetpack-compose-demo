@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 fun ProgressIndicatorUI(modifier: Modifier = Modifier) {
     Scaffold(modifier = modifier,
         topBar = {
-            DemoTopBar("Cards")
+            DemoTopBar("ProgressIndicator")
         }) {
 
         Column {

@@ -75,6 +75,18 @@ fun NavGraphBuilder.addWeightGraph(appState: DemoAppState ,modifier: Modifier = 
     composable(DemoWeightSections.Tabs.route){
         TabUI(modifier = modifier)
     }
+    composable(DemoWeightSections.Sliders.route){
+        SliderUI()
+    }
+    composable(DemoWeightSections.Checkboxes.route){
+        CheckBoxesUI()
+    }
+    composable(DemoWeightSections.FAB.route){
+        ButtonUI()
+    }
+    composable(DemoWeightSections.RadioButtons.route){
+        ButtonUI()
+    }
 }
 
 
