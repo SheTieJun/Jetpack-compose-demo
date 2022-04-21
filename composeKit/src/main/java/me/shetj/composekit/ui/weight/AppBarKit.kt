@@ -70,6 +70,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.permissions.*
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 
 /**
@@ -157,15 +158,11 @@ fun MidAppBar() {
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun ShowDialog(openDialog: MutableState<Boolean>) {
+fun ShowPermissionDialog(openDialog: MutableState<Boolean>) {
 
-    val cameraPermissionState = rememberPermissionState(
-        permission.CAMERA
+    val cameraPermissionState = rememberMultiplePermissionsState(
+        listOf(permission.CAMERA,permission.READ_EXTERNAL_STORAGE)
     )
-
-    if (cameraPermissionState.status.isGranted) {
-        return
-    }
 
     AlertDialog(
         onDismissRequest = {
@@ -176,7 +173,9 @@ fun ShowDialog(openDialog: MutableState<Boolean>) {
             Text(text = "获取权限")
         },
         text = {
-            val textToShow = if (cameraPermissionState.status.shouldShowRationale) {
+            val textToShow =  if (cameraPermissionState.allPermissionsGranted) {
+                "The camera and read external storage permission is granted"
+            }else if (cameraPermissionState.shouldShowRationale) {
                 // If the user has denied the permission but the rationale can be shown,
                 // then gently explain why the app requires this permission
                 "The camera is important for this app. Please grant the permission."
@@ -184,19 +183,28 @@ fun ShowDialog(openDialog: MutableState<Boolean>) {
                 // If it's the first time the user lands on this feature, or the user
                 // doesn't want to be asked again for this permission, explain that the
                 // permission is required
-                "Camera permission required for this feature to be available. " +
-                        "Please grant the permission"
+                 buildString {
+                     cameraPermissionState.revokedPermissions.forEach {
+                         append(it.permission)
+                         append(" ")
+                     }
+                     append(
+                         " required for this feature to be available. " +
+                                 "Please grant the permission")
+                 }
             }
             Text(textToShow)
         },
         confirmButton = {
-            TextButton(
-                onClick = {
-                    cameraPermissionState.launchPermissionRequest()
-                    openDialog.value = false
+            if (!cameraPermissionState.allPermissionsGranted) {
+                TextButton(
+                    onClick = {
+                        cameraPermissionState.launchMultiplePermissionRequest()
+                        openDialog.value = false
+                    }
+                ) {
+                    Text("Request permission")
                 }
-            ) {
-                Text("Request permission")
             }
         },
         dismissButton = {

@@ -101,7 +101,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.shetj.composekit.ui.theme.RedTheme
 import me.shetj.composekit.ui.weight.DrawerButton
-import me.shetj.composekit.ui.weight.ShowDialog
+import me.shetj.composekit.ui.weight.ShowPermissionDialog
 import me.shetj.composekit.utils.isDark
 import me.shetj.composekit.utils.showToast
 
@@ -171,7 +171,7 @@ class MainActivity : ComponentActivity() {
                     }
 
                     if (openDialog) {
-                        ShowDialog(stateOfOpen)
+                        ShowPermissionDialog(stateOfOpen)
                     }
                     ModalNavigationDrawer(
                         drawerState = drawerState,

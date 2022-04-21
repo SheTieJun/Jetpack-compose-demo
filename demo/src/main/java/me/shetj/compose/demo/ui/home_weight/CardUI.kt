@@ -43,7 +43,7 @@ fun CardUI(modifier: Modifier = Modifier) {
             Card(
                 Modifier
                     .size(width = 180.dp, height = 100.dp)
-                    .padding(5.dp)
+                    .padding(10.dp)
                     .drag()) {
                 CornerImage(res = mipmap.compose_logo, modifier = Modifier
                     .width(50.dp)
@@ -57,7 +57,7 @@ fun CardUI(modifier: Modifier = Modifier) {
             ElevatedCard(
                 Modifier
                     .size(width = 180.dp, height = 100.dp)
-                    .padding(5.dp)) {
+                    .padding(10.dp).drag()) {
                 CornerImage(res = mipmap.compose_logo, modifier = Modifier
                     .width(50.dp)
                     .height(50.dp),15.dp)
@@ -70,7 +70,7 @@ fun CardUI(modifier: Modifier = Modifier) {
             OutlinedCard(
                 Modifier
                     .size(width = 180.dp, height = 100.dp)
-                    .padding(5.dp)) {
+                    .padding(10.dp).drag()) {
                 CornerImage(res = mipmap.compose_logo, modifier = Modifier
                     .width(50.dp)
                     .height(50.dp),15.dp)

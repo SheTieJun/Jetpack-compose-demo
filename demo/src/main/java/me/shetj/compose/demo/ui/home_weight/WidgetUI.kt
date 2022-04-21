@@ -28,6 +28,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -41,6 +42,7 @@ import me.shetj.compose.demo.model.BadgesManager
 import me.shetj.compose.demo.model.WeightRepo
 import me.shetj.compose.demo.ui.home.BASE_WEIGHT_ROUTER
 import me.shetj.compose.demo.ui.home.DemoWeightSections
+import me.shetj.composekit.ui.weight.ShowPermissionDialog
 import me.shetj.composekit.utils.isDark
 
 
@@ -58,6 +60,21 @@ fun NavGraphBuilder.addWeightGraph(appState: DemoAppState ,modifier: Modifier = 
     composable(DemoWeightSections.BOTTOMAPPBAR.route){
         BottomAPPBar(modifier)
     }
+    composable(DemoWeightSections.NAVIGATIONBAR.route){
+        BottomAPPBar(modifier)
+    }
+    composable(DemoWeightSections.TOPAPPBAR.route){
+        TopAppBarUI(modifier,false)
+    }
+    composable(DemoWeightSections.MENUS.route){
+        TopAppBarUI(modifier,true)
+    }
+    composable(DemoWeightSections.PROGRESSINDICATORS.route){
+        ProgressIndicatorUI(modifier = modifier)
+    }
+    composable(DemoWeightSections.Tabs.route){
+        TabUI(modifier = modifier)
+    }
 }
 
 
@@ -66,7 +83,7 @@ fun NavGraphBuilder.addWeightGraph(appState: DemoAppState ,modifier: Modifier = 
 fun WidgetUI(modifier: Modifier, onSnackSelected: (String, NavBackStackEntry) -> Unit, from: NavBackStackEntry) {
     Scaffold(modifier = modifier.fillMaxSize(),
         topBar = {
-            DemoTopBar("Compose Components")
+            DemoTopBar("Compose Components MD3")
         }) { padding ->
 
         WidgetList(padding,onSnackSelected,from)
@@ -87,6 +104,15 @@ fun WidgetList(
     if (isShow.value){
         ShowTipDialog(isShow)
     }
+
+    val stateOfOpen = remember { mutableStateOf(false) }
+
+    val openDialog by stateOfOpen
+
+    if (openDialog){
+        ShowPermissionDialog(openDialog = stateOfOpen)
+    }
+
     LazyColumn(contentPadding = padding) {
         items(items = weights, key = { it.id }, itemContent = { item ->
             Box(
@@ -97,6 +123,9 @@ fun WidgetList(
                         when (item.name) {
                             "Badges" -> {
                                 BadgesManager.addBadges()
+                            }
+                            "Dialogs" -> {
+                                stateOfOpen.value = true
                             }
                             else -> {
                                 val router = "$BASE_WEIGHT_ROUTER/${item.name}"
@@ -173,7 +202,7 @@ fun ShowTipDialog(isShow: MutableState<Boolean>) {
             Text(text = "Compose Components")
         },
         text = {
-            val textToShow = "当前功能暂未完成，敬请期待"
+            val textToShow = "当前功能暂未完成~"
             Text(textToShow)
         },
         confirmButton = {
