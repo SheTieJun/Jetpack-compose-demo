@@ -11,8 +11,8 @@ import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material.RadioButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.Icons.Filled
+import androidx.compose.material.icons.Icons.Outlined
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material3.Button
@@ -31,7 +31,6 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Switch
-import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -75,13 +74,7 @@ fun ButtonUI(modifier: Modifier = Modifier) {
             Spacer(Modifier.height(16.dp))
             //2. 圆角image
 
-            Row() {
-                IconButton(onClick = { /* doSomething() */ }) {
-                    Icon(Icons.Outlined.Lock, contentDescription = "Localized description")
-                }
-                Spacer(Modifier.size(16.dp))
-                IconToggleButtonSample()
-            }
+            IconButton()
 
             Fab()
 
@@ -89,6 +82,22 @@ fun ButtonUI(modifier: Modifier = Modifier) {
 
             SwitchSample()
         }
+    }
+}
+
+@Composable
+private fun IconButton() {
+    Spacer(Modifier.size(26.dp))
+    Text(text = "Fab", style = MaterialTheme.typography.titleLarge)
+    Spacer(Modifier.size(10.dp))
+    Divider()
+    Row() {
+
+        IconButton(onClick = { /* doSomething() */ }) {
+            Icon(Outlined.Lock, contentDescription = "Localized description")
+        }
+        Spacer(Modifier.size(16.dp))
+        IconToggleButtonSample()
     }
 }
 
@@ -169,6 +178,7 @@ fun SwitchSample() {
     Spacer(Modifier.size(26.dp))
     Text(text = "Switch", style = MaterialTheme.typography.titleLarge)
     Spacer(Modifier.size(10.dp))
+    Divider()
     var checked by remember { mutableStateOf(true) }
     Switch(checked = checked, onCheckedChange = { checked = it })
 }

@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
+
 package me.shetj.compose.demo.ui.home_weight
 
 import androidx.compose.animation.rememberSplineBasedDecay
@@ -49,9 +51,7 @@ import androidx.compose.material3.contentColorFor
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -66,7 +66,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -75,7 +74,6 @@ import me.shetj.composekit.ui.weight.ShowPermissionDialog
 import me.shetj.composekit.utils.isDark
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DemoNavi(drawerValue: DrawerValue = Closed){
 
@@ -130,7 +128,7 @@ fun DemoNavi(drawerValue: DrawerValue = Closed){
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            drawerCase(position, scope, drawerState)
+            DrawerCase(position, scope, drawerState)
         },
         drawerContainerColor = bgColor,
         drawerContentColor = contentColorFor(backgroundColor = bgColor),
@@ -175,9 +173,8 @@ fun DemoNavi(drawerValue: DrawerValue = Closed){
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun drawerCase(
+private fun DrawerCase(
     position: MutableState<Int>,
     scope: CoroutineScope,
     drawerState: DrawerState
@@ -252,7 +249,6 @@ private fun drawerCase(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun AppBar(
     scope: CoroutineScope,
@@ -292,7 +288,6 @@ private fun AppBar(
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalFoundationApi::class)
 @Composable
 private fun lyColumn(
     innerPadding: PaddingValues,
@@ -319,10 +314,6 @@ private fun lyColumn(
                     )
                 }
             }
-
-            /**
-             * 这里必须实现key 方法，否则删除的时候会出现 空白的问题
-             */
 
             /**
              * 这里必须实现key 方法，否则删除的时候会出现 空白的问题
