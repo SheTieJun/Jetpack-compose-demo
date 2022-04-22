@@ -60,9 +60,6 @@ fun NavGraphBuilder.addWeightGraph(appState: DemoAppState ,modifier: Modifier = 
     composable(DemoWeightSections.BOTTOMAPPBAR.route){
         BottomAPPBar(modifier)
     }
-    composable(DemoWeightSections.NAVIGATIONBAR.route){
-        BottomAPPBar(modifier)
-    }
     composable(DemoWeightSections.TOPAPPBAR.route){
         TopAppBarUI(modifier,false)
     }
@@ -81,11 +78,11 @@ fun NavGraphBuilder.addWeightGraph(appState: DemoAppState ,modifier: Modifier = 
     composable(DemoWeightSections.Checkboxes.route){
         CheckBoxesUI()
     }
-    composable(DemoWeightSections.FAB.route){
-        ButtonUI()
+    composable(DemoWeightSections.TextFields.route){
+        TextFieldsUI()
     }
-    composable(DemoWeightSections.RadioButtons.route){
-        ButtonUI()
+    composable(DemoWeightSections.NavigationDrawer.route){
+        NavigationDrawerUI()
     }
 }
 

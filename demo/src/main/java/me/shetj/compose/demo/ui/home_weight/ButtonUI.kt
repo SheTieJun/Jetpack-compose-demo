@@ -9,8 +9,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material.RadioButton
+import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.Icons.Filled
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedButton
@@ -19,11 +23,15 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -67,13 +75,36 @@ fun ButtonUI(modifier: Modifier = Modifier) {
             Spacer(Modifier.height(16.dp))
             //2. 圆角image
 
+            Row() {
+                IconButton(onClick = { /* doSomething() */ }) {
+                    Icon(Icons.Outlined.Lock, contentDescription = "Localized description")
+                }
+                Spacer(Modifier.size(16.dp))
+                IconToggleButtonSample()
+            }
 
             Fab()
 
             RadioButtonUI()
+
+            SwitchSample()
         }
     }
 }
+
+
+@Composable
+fun IconToggleButtonSample() {
+    var checked by remember { mutableStateOf(false) }
+    IconToggleButton(checked = checked, onCheckedChange = { checked = it }) {
+        if (checked) {
+            Icon(Icons.Filled.Lock, contentDescription = "Localized description")
+        } else {
+            Icon(Icons.Outlined.Lock, contentDescription = "Localized description")
+        }
+    }
+}
+
 
 @Composable
 private fun Fab() {
@@ -131,4 +162,13 @@ private fun RadioButtonUI() {
             )
         }
     }
+}
+
+@Composable
+fun SwitchSample() {
+    Spacer(Modifier.size(26.dp))
+    Text(text = "Switch", style = MaterialTheme.typography.titleLarge)
+    Spacer(Modifier.size(10.dp))
+    var checked by remember { mutableStateOf(true) }
+    Switch(checked = checked, onCheckedChange = { checked = it })
 }

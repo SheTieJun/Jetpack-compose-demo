@@ -1,6 +1,7 @@
 package me.shetj.compose.demo.model
 
 import androidx.compose.runtime.Immutable
+import me.shetj.compose.demo.model.WeightRepo.keyId
 
 /**
  *
@@ -13,6 +14,7 @@ object WeightRepo {
 
     fun getWeights() = weightCollection
 
+    var keyId = 0L
 }
 
 
@@ -24,92 +26,77 @@ data class WeightModel(
 )
 
 private val images = WeightModel(
-    id = 0L,
+    id = keyId++,
     name = "Images",
 )
 
 
 private val button = WeightModel(
-    id = 1L,
+    id = keyId++,
     name = "Buttons",
 )
 
 
 private val bottomappbar = button.copy(
-    id = 2L,
+    id = keyId++,
     name = "BottomAppBar",
 )
 
 
-
 private val Cards = button.copy(
-    id = 3L,
+    id = keyId++,
     name = "Cards",
 )
 
 private val menus = button.copy(
-    id = 4L,
+    id = keyId++,
     name = "Menus",
 )
 
 private val checkboxes = button.copy(
-    id = 5L,
+    id = keyId++,
     name = "Checkboxes",
 )
 
 private val dialogs = button.copy(
-    id = 6L,
+    id = keyId++,
     name = "Dialogs",
 )
 
 private val progressindicators = button.copy(
-    id = 7L,
+    id = keyId++,
     name = "ProgressIndicators",
 )
 
 private val tabs = button.copy(
-    id = 8L,
+    id = keyId++,
     name = "Tabs",
 )
 
 private val sliders = button.copy(
-    id = 9L,
+    id = keyId++,
     name = "Sliders",
 )
 
 
-private val fab = button.copy(
-    id = 10L,
-    name = "FAB",
-)
-
 private val badges = button.copy(
-    id = 11L,
+    id = keyId++,
     name = "Badges",
 )
 
-private val navigationbar = button.copy(
-    id = 12L,
-    name = "NavigationBar",
-)
-
-private val radiobuttons = button.copy(
-    id = 13L,
-    name = "RadioButtons",
-)
 
 private val textfields = button.copy(
-    id = 14L,
+    id = keyId++,
     name = "TextFields",
 )
 
 private val topappbar = button.copy(
-    id = 15L,
+    id = keyId++,
     name = "TopAppBar",
 )
 
 private val NavigationDrawer = button.copy(
-    id = 16L,
+    id = keyId++,
     name = "NavigationDrawer",
 )
 
@@ -120,15 +107,12 @@ val weightCollection = listOf(
     topappbar,
     Cards,
     menus,
-    navigationbar,
     dialogs,
     progressindicators,
     tabs,
     sliders,
     badges,
-    radiobuttons,
     checkboxes,
-    fab,
     textfields,
     NavigationDrawer
 )

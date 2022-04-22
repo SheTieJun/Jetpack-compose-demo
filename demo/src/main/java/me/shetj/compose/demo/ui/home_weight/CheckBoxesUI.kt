@@ -25,7 +25,7 @@ fun CheckBoxesUI(modifier: Modifier = Modifier) {
 
     Scaffold(modifier = modifier,
         topBar = {
-            DemoTopBar("Slider")
+            DemoTopBar("CheckBoxes")
         }) {
         Column(
             modifier = Modifier
