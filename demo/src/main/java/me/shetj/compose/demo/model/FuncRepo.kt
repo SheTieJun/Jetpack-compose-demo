@@ -55,6 +55,7 @@ val funcCollection = listOf(
     webview,
     bottomSheet,
     viewPage,
-    videoView
+    videoView,
+    Canvas
 )
 

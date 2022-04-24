@@ -20,6 +20,7 @@ import androidx.navigation.navigation
 import me.shetj.compose.demo.ui.components.BottomBar
 import me.shetj.compose.demo.ui.home.DemoHomeSections
 import me.shetj.compose.demo.ui.home.addHomeGraph
+import me.shetj.compose.demo.ui.home_func.addFuncGraph
 import me.shetj.compose.demo.ui.home_weight.addWeightGraph
 import me.shetj.composekit.ui.theme.DefTheme
 import me.shetj.composekit.ui.weight.DemoSnackbar
@@ -86,6 +87,7 @@ fun NavGraphBuilder.DemoAppNavGraph(
     ) {
         addHomeGraph(onSnackSelected)
         addWeightGraph(appState)
+        addFuncGraph(appState)
     }
 }
 

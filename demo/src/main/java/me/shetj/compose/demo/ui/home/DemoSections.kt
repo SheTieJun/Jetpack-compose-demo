@@ -32,6 +32,8 @@ fun DemoHomeSections.isNewWork() = route == NETWORK.route
 
 const val BASE_WEIGHT_ROUTER = "home/${DemoDestinations.WEIGHT_ROUTE}"
 
+const val BASE_FUNC_ROUTER = "home/${DemoDestinations.FUNC_ROUTE}"
+
 enum class DemoWeightSections(
     @StringRes val title: Int,
     val icon: ImageVector,
@@ -50,4 +52,14 @@ enum class DemoWeightSections(
     Checkboxes(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/Checkboxes"),
     TextFields(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/TextFields"),
     NavigationDrawer(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/NavigationDrawer"),
+}
+
+
+enum class DemoFuncSections(
+    @StringRes val title: Int,
+    val icon: ImageVector,
+    val selectIcon:ImageVector,
+    val route: String
+) {
+    WebView(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_FUNC_ROUTER/WebView"),
 }

@@ -128,6 +128,7 @@ class DemoAppState(
     }
 
     fun upPress() {
+        //返回上一次
         navController.navigateUp()
     }
 

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material.RadioButton
 import androidx.compose.material.icons.Icons
@@ -50,37 +51,41 @@ fun ButtonUI(modifier: Modifier = Modifier) {
         topBar = {
             DemoTopBar("Buttons")
         }) {
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(start = 15.dp)) {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 15.dp)
+        ) {
 
-            //1. Button	M3 filled button
-            Button(onClick = { /* Do something! */ }) { Text("Button") }
-            Spacer(Modifier.height(16.dp))
-
-            //2. ElevatedButton	M3 elevated button
-            ElevatedButton(onClick = { /* Do something! */ }) { Text("Elevated Button") }
-            Spacer(Modifier.height(16.dp))
-
-            //3. FilledTonalButton	M3 filled tonal button
-            FilledTonalButton(onClick = { /* Do something! */ }) { Text("Filled Tonal Button") }
-            Spacer(Modifier.height(16.dp))
-
-            //4. OutlinedButton	M3 outlined button
-            OutlinedButton(onClick = { /* Do something! */ }) { Text("Outlined Button") }
-            Spacer(Modifier.height(16.dp))
-            //5. TextButton
-            TextButton(onClick = { /* Do something! */ }) { Text("Text Button") }
-            Spacer(Modifier.height(16.dp))
+            item {
+                //1. Button	M3 filled button
+                Button(onClick = { /* Do something! */ }) { Text("Button") }
+                Spacer(Modifier.height(16.dp))
+                //2. ElevatedButton	M3 elevated button
+                ElevatedButton(onClick = { /* Do something! */ }) { Text("Elevated Button") }
+                Spacer(Modifier.height(16.dp))
+                //3. FilledTonalButton	M3 filled tonal button
+                FilledTonalButton(onClick = { /* Do something! */ }) { Text("Filled Tonal Button") }
+                Spacer(Modifier.height(16.dp))
+                //4. OutlinedButton	M3 outlined button
+                OutlinedButton(onClick = { /* Do something! */ }) { Text("Outlined Button") }
+                Spacer(Modifier.height(16.dp))
+                //5. TextButton
+                TextButton(onClick = { /* Do something! */ }) { Text("Text Button") }
+                Spacer(Modifier.height(16.dp))
+            }
             //2. 圆角image
 
-            IconButton()
+            item {
+                IconButton()
+            }
+            item {
+                Fab()
 
-            Fab()
+                RadioButtonUI()
 
-            RadioButtonUI()
-
-            SwitchSample()
+                SwitchSample()
+            }
         }
     }
 }

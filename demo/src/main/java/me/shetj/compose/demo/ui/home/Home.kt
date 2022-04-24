@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import me.shetj.compose.demo.ui.home_func.FuncUI
 import me.shetj.compose.demo.ui.home_weight.WidgetUI
 
 @ExperimentalMaterial3Api
@@ -30,7 +31,7 @@ fun NavGraphBuilder.addHomeGraph(
         WidgetUI(modifier,onSnackSelected,from)
     }
     composable(DemoHomeSections.FUNC.route) { from ->
-        FuncUI(modifier)
+        FuncUI(modifier,onSnackSelected,from)
     }
     composable(DemoHomeSections.NETWORK.route) { from ->
         NetWorkUI(modifier)
@@ -41,14 +42,6 @@ fun NavGraphBuilder.addHomeGraph(
 }
 
 
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun FuncUI(modifier: Modifier) {
-    Surface(modifier = modifier.fillMaxSize()) {
-        Text(text = "功能", modifier = modifier.wrapContentSize())
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
