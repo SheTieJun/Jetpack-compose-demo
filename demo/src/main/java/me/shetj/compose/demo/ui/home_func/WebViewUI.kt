@@ -72,7 +72,8 @@ fun WebViewUI(modifier: Modifier = Modifier) {
                     OutlinedTextField(
                         value = textFieldValue,
                         onValueChange = setTextFieldValue,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        singleLine = true
                     )
                 }
 

@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -158,7 +159,7 @@ fun WidgetList(
 
 @ExperimentalMaterial3Api
 @Composable
-fun DemoTopBar(title: String) {
+fun DemoTopBar(title: String, action:(@Composable RowScope.() ->Unit)? =null) {
 
     val bgColor = MaterialTheme.colorScheme.background
     val decayAnimationSpec = rememberSplineBasedDecay<Float>()
@@ -188,6 +189,7 @@ fun DemoTopBar(title: String) {
                     contentDescription = "change Theme",
                 )
             }
+            action?.invoke(this)
         },
         colors = TopAppBarDefaults.largeTopAppBarColors(
             containerColor = bgColor,

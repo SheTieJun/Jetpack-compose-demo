@@ -11,10 +11,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,18 +27,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import com.google.accompanist.pager.ExperimentalPagerApi
 import me.shetj.compose.demo.DemoAppState
-import me.shetj.compose.demo.model.BadgesManager
 import me.shetj.compose.demo.model.FuncRepo
-import me.shetj.compose.demo.model.WeightRepo
 import me.shetj.compose.demo.ui.home.BASE_FUNC_ROUTER
-import me.shetj.compose.demo.ui.home.BASE_WEIGHT_ROUTER
 import me.shetj.compose.demo.ui.home.DemoFuncSections
-import me.shetj.compose.demo.ui.home.DemoWeightSections
 import me.shetj.compose.demo.ui.home_weight.DemoTopBar
-import me.shetj.compose.demo.ui.home_weight.ImageUI
 import me.shetj.compose.demo.ui.home_weight.ShowTipDialog
-import me.shetj.compose.demo.ui.home_weight.WidgetList
 import me.shetj.composekit.ui.weight.ShowPermissionDialog
 
 /**
@@ -45,10 +43,14 @@ import me.shetj.composekit.ui.weight.ShowPermissionDialog
  * <b>@email：</b> 375105540@qq.com<br>
  * <b>@describe</b>  <br>
  */
+@ExperimentalPagerApi
 @ExperimentalMaterial3Api
 fun NavGraphBuilder.addFuncGraph(appState: DemoAppState, modifier: Modifier = Modifier) {
     composable(DemoFuncSections.WebView.route) { from ->
         WebViewUI(modifier)
+    }
+    composable(DemoFuncSections.ViewPage.route) { from ->
+        PagerUI(modifier)
     }
 }
 
@@ -114,4 +116,29 @@ fun FuncList(
             }
         })
     }
+}
+
+@Composable
+fun ShowTipFuncDialog(isShow: MutableState<Boolean>) {
+    AlertDialog(
+        onDismissRequest = {
+            isShow.value = false
+        },
+        title = {
+            Text(text = "Function Sample")
+        },
+        text = {
+            val textToShow = "当前功能暂未完成~"
+            Text(textToShow)
+        },
+        confirmButton = {
+            TextButton(
+                onClick = {
+                    isShow.value = false
+                }
+            ) {
+                Text("I Know")
+            }
+        }
+    )
 }

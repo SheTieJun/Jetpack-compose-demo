@@ -1,6 +1,6 @@
 #JetPack Compose 使用案例
 
-**这个是一个练习项目，练习Compose**
+**这个是一个练习项目，练习JetPack-Compose**
 
 
 |  MD3 |     |  |

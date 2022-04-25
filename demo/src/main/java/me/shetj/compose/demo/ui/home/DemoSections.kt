@@ -40,18 +40,18 @@ enum class DemoWeightSections(
     val selectIcon:ImageVector,
     val route: String
 ) {
-    IMAGES(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/Images"),
-    BUTTON(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/Buttons"),
-    CARDS(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/Cards"),
-    BOTTOMAPPBAR(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/BottomAppBar"),
-    TOPAPPBAR(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/TopAppBar"),
-    MENUS(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/Menus"),
-    PROGRESSINDICATORS(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/ProgressIndicators"),
-    Tabs(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/Tabs"),
-    Sliders(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/Sliders"),
-    Checkboxes(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/Checkboxes"),
-    TextFields(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/TextFields"),
-    NavigationDrawer(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "home/${DemoDestinations.WEIGHT_ROUTE}/NavigationDrawer"),
+    IMAGES(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/Images"),
+    BUTTON(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/Buttons"),
+    CARDS(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/Cards"),
+    BOTTOMAPPBAR(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/BottomAppBar"),
+    TOPAPPBAR(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/TopAppBar"),
+    MENUS(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/Menus"),
+    PROGRESSINDICATORS(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/ProgressIndicators"),
+    Tabs(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/Tabs"),
+    Sliders(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/Sliders"),
+    Checkboxes(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/Checkboxes"),
+    TextFields(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/TextFields"),
+    NavigationDrawer(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_WEIGHT_ROUTER/NavigationDrawer"),
 }
 
 
@@ -61,5 +61,6 @@ enum class DemoFuncSections(
     val selectIcon:ImageVector,
     val route: String
 ) {
-    WebView(R.string.home_feed, Icons.Outlined.Home,Icons.Filled.Home,  "$BASE_FUNC_ROUTER/WebView"),
+    WebView(R.string.home_func, Icons.Outlined.ShoppingCart,Icons.Filled.ShoppingCart,  "$BASE_FUNC_ROUTER/WebView"),
+    ViewPage(R.string.home_func, Icons.Outlined.ShoppingCart,Icons.Filled.ShoppingCart,  "$BASE_FUNC_ROUTER/ViewPage"),
 }

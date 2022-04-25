@@ -51,11 +51,27 @@ val Canvas = webview.copy(
     name = "Canvas"
 )
 
+val Record = webview.copy(
+    id = keyId ++,
+    name = "Record"
+)
+
+val FlowLayout = webview.copy(
+    id = keyId ++,
+    name = "FlowLayout"
+)
+
+val Anim = webview.copy(
+    id = keyId ++,
+    name = "Animation"
+)
+
 val funcCollection = listOf(
     webview,
     bottomSheet,
     viewPage,
     videoView,
-    Canvas
+    Canvas,
+    Record
 )
 
