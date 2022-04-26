@@ -17,6 +17,8 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.navigation
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import me.shetj.compose.demo.ui.components.BottomBar
 import me.shetj.compose.demo.ui.home.DemoHomeSections
 import me.shetj.compose.demo.ui.home.addHomeGraph
@@ -26,7 +28,9 @@ import me.shetj.composekit.ui.theme.DefTheme
 import me.shetj.composekit.ui.weight.DemoSnackbar
 import me.shetj.composekit.utils.isDark
 
-@OptIn(ExperimentalMaterial3Api::class)
+@ExperimentalPermissionsApi
+@ExperimentalMaterial3Api
+@ExperimentalPagerApi
 @Composable
 fun DemoApp() {
 
@@ -72,6 +76,8 @@ fun DemoApp() {
 }
 
 
+@ExperimentalPermissionsApi
+@ExperimentalPagerApi
 @ExperimentalMaterial3Api
 fun NavGraphBuilder.DemoAppNavGraph(
     appState: DemoAppState,

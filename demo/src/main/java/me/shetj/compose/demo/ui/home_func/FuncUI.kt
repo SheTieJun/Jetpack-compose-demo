@@ -28,6 +28,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import me.shetj.compose.demo.DemoAppState
 import me.shetj.compose.demo.model.FuncRepo
 import me.shetj.compose.demo.ui.home.BASE_FUNC_ROUTER
@@ -43,6 +44,7 @@ import me.shetj.composekit.ui.weight.ShowPermissionDialog
  * <b>@email：</b> 375105540@qq.com<br>
  * <b>@describe</b>  <br>
  */
+@ExperimentalPermissionsApi
 @ExperimentalPagerApi
 @ExperimentalMaterial3Api
 fun NavGraphBuilder.addFuncGraph(appState: DemoAppState, modifier: Modifier = Modifier) {
@@ -51,6 +53,9 @@ fun NavGraphBuilder.addFuncGraph(appState: DemoAppState, modifier: Modifier = Mo
     }
     composable(DemoFuncSections.ViewPage.route) { from ->
         PagerUI(modifier)
+    }
+    composable(DemoFuncSections.Record.route){
+        RecordUI(modifier)
     }
 }
 

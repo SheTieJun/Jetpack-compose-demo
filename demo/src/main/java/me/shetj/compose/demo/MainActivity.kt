@@ -12,14 +12,21 @@ import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+
+@ExperimentalPermissionsApi
+@ExperimentalPagerApi
+@ExperimentalMaterial3Api
 class MainActivity : ComponentActivity() {
 
     private var splashScreen: SplashScreen? =null
     private var isKeep = true
-    @OptIn(ExperimentalMaterial3Api::class)
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)

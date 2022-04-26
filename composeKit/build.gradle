@@ -91,4 +91,7 @@ dependencies {
     implementation "androidx.window:window:1.0.0-beta04"
 
     api "androidx.core:core-splashscreen:1.0.0-beta02"
+
+
+    api "androidx.constraintlayout:constraintlayout-compose:1.0.0"
 }

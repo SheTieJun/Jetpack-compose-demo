@@ -57,4 +57,7 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
     implementation project(path: ':composeKit')
+
+    implementation "com.github.SheTieJun.Mp3Recorder:recorder-core:1.7.1"//必选
+    implementation "com.github.SheTieJun.Mp3Recorder:recorder-mix:1.7.1"//可选
 }
