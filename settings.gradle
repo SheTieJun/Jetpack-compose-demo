@@ -14,7 +14,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "samples-compose"
+rootProject.name = "Jetpack-compose-demo"
 include ':app'
 include ':composeKit'
 include ':demo'

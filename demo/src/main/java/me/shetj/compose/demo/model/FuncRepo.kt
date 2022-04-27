@@ -72,6 +72,9 @@ val funcCollection = listOf(
     viewPage,
     videoView,
     Canvas,
-    Record
+    Record,
+    FlowLayout,
+    Anim
+
 )
 
