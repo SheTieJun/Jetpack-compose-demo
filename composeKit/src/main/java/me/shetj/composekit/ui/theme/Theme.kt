@@ -231,4 +231,8 @@ fun SAppTheme(
     }
 }
 
+val MD3 = MaterialTheme
+
+val MD = androidx.compose.material.MaterialTheme
+
 //      LocalOverScrollConfiguration provides null, // == android:overScrollMode="never"

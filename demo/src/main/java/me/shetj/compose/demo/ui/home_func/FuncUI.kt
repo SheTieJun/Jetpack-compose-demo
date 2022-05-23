@@ -60,8 +60,15 @@ fun NavGraphBuilder.addFuncGraph(appState: DemoAppState, modifier: Modifier = Mo
     composable(DemoFuncSections.VideoView.route){
         VideoScreen(modifier)
     }
+    composable(DemoFuncSections.Canvas.route){
+        CanvasScreen()
+    }
+    composable(DemoFuncSections.FlowLayout.route){
+        FlowLayoutScreen()
+    }
 }
 
+@ExperimentalMaterial3Api
 @Composable
 fun FuncUI(modifier: Modifier = Modifier, onSnackSelected: (String, NavBackStackEntry) -> Unit, from: NavBackStackEntry){
     Scaffold(modifier = modifier.fillMaxSize(),

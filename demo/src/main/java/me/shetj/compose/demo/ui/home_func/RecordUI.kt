@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -54,9 +55,10 @@ import me.shetj.composekit.ui.theme.font_noto_sans
 @ExperimentalMaterial3Api
 @Composable
 fun RecordUI(modifier: Modifier = Modifier) {
-
+    val context = LocalContext.current
     val recordStateInfo = rememberRecorderState() { isAutoComplete, file ->
         Log.i("rememberRecorderState", "isAutoComplete = $isAutoComplete || file = $file")
+        Toast.makeText(context, "录制完成：$file", Toast.LENGTH_LONG).show()
     }
 
     val isShowDialog = remember {
