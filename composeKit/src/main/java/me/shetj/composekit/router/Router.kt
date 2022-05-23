@@ -16,18 +16,18 @@ import androidx.core.net.toUri
  */
 class Router {
 
-    @Composable
-    fun testBuildRouter() {
-        val id = "exampleId"
-        val context = LocalContext.current
-        val deepLinkIntent = Intent(
-            Intent.ACTION_VIEW,
-            "https://www.example.com/$id".toUri(),
-        )
-        val deepLinkPendingIntent: PendingIntent? = TaskStackBuilder.create(context).run {
-            addNextIntentWithParentStack(deepLinkIntent)
-            getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
-        }
-    }
+//    @Composable
+//    fun testBuildRouter() {
+//        val id = "exampleId"
+//        val context = LocalContext.current
+//        val deepLinkIntent = Intent(
+//            Intent.ACTION_VIEW,
+//            "https://www.example.com/$id".toUri(),
+//        )
+//        val deepLinkPendingIntent: PendingIntent? = TaskStackBuilder.create(context).run {
+//            addNextIntentWithParentStack(deepLinkIntent)
+//            getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+//        }
+//    }
 }
 

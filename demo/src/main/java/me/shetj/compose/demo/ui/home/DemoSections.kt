@@ -64,4 +64,5 @@ enum class DemoFuncSections(
     WebView(R.string.home_func, Icons.Outlined.ShoppingCart,Icons.Filled.ShoppingCart,  "$BASE_FUNC_ROUTER/WebView"),
     ViewPage(R.string.home_func, Icons.Outlined.ShoppingCart,Icons.Filled.ShoppingCart,  "$BASE_FUNC_ROUTER/ViewPage"),
     Record(R.string.home_func, Icons.Outlined.ShoppingCart,Icons.Filled.ShoppingCart,  "$BASE_FUNC_ROUTER/Record"),
+    VideoView(R.string.home_func, Icons.Outlined.ShoppingCart,Icons.Filled.ShoppingCart,  "$BASE_FUNC_ROUTER/VideoView"),
 }

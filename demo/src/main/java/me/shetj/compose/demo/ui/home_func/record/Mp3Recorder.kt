@@ -43,7 +43,7 @@ sealed class BGMState {
     object BGMIng : BGMState()
     object BGMPause : BGMState()
     object BGMStop : BGMState()
-    class BGMError(val e: Exception) : BGMState()
+    class BGMError(val e: Exception?) : BGMState()
 }
 
 @Composable
@@ -91,7 +91,7 @@ class Mp3RecorderState(
             isPlayIngBgm.value = BGMStop
         }
 
-        override fun onError(throwable: Exception) {
+        override fun onError(throwable: Exception?) {
             isPlayIngBgm.value = BGMError(throwable)
         }
 
@@ -178,7 +178,7 @@ class Mp3RecorderState(
         }
     }
 
-    fun updateMaxTime(maxTime: Int) {
+    fun updateMaxTime(maxTime: Long) {
         mRecorder.setMaxTime(maxTime)
     }
 

@@ -57,6 +57,9 @@ fun NavGraphBuilder.addFuncGraph(appState: DemoAppState, modifier: Modifier = Mo
     composable(DemoFuncSections.Record.route){
         RecordUI(modifier)
     }
+    composable(DemoFuncSections.VideoView.route){
+        VideoScreen(modifier)
+    }
 }
 
 @Composable
@@ -101,7 +104,7 @@ fun FuncList(
                     .height(48.dp)
                     .clickable {
                         when (item.name) {
-                            "x" ->{
+                            "x" -> {
 
                             }
                             else -> {

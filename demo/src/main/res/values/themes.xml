@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.Samplescompose" parent="Theme.SplashScreen.IconBackground">
         <item name="windowSplashScreenAnimatedIcon">@mipmap/icon_jetpack_compose</item>
         <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenIconBackgroundColor">@color/white</item>
+        <item name="windowSplashScreenAnimationDuration">800</item>
     </style>
+
+    <style name="Base.Theme.SplashScreen" parent="android:Theme.DeviceDefault.NoActionBar" tools:ignore="PrivateResource" />
+    <style name="Base.Theme.SplashScreen.DayNight" parent="android:Theme.DeviceDefault.NoActionBar" tools:ignore="PrivateResource" />
+    <style name="Base.Theme.SplashScreen.Light" parent="android:Theme.DeviceDefault.NoActionBar" tools:ignore="PrivateResource" />
+    <style name="Base.v21.Theme.SplashScreen" parent="android:Theme.DeviceDefault.NoActionBar" tools:ignore="PrivateResource" />
 </resources>

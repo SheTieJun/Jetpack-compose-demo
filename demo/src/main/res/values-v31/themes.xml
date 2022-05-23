@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <style name="Theme.Samplescompose" parent="Theme.SplashScreen.IconBackground">
         <item name="windowSplashScreenAnimatedIcon">@mipmap/icon_jetpack_compose</item>
         <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimationDuration">800</item>
+        <!-- API 31+ specific attributes -->
+        <item name="android:windowSplashScreenBrandingImage">@drawable/branding</item>
         <item name="windowSplashScreenIconBackgroundColor">@color/white</item>
+
     </style>
 </resources>

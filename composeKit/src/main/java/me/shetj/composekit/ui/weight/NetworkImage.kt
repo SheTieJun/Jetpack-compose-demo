@@ -90,7 +90,6 @@ fun CoilImage(
     url: String,
     contentDescription: String?,
     modifier: Modifier = Modifier,
-
     contentScale: ContentScale = ContentScale.Crop,
     @DrawableRes placeholderId: Int? = null
 ) {
