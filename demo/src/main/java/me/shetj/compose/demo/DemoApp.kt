@@ -22,8 +22,8 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import me.shetj.compose.demo.ui.components.BottomBar
 import me.shetj.compose.demo.ui.home.DemoHomeSections
 import me.shetj.compose.demo.ui.home.addHomeGraph
-import me.shetj.compose.demo.ui.home_func.addFuncGraph
-import me.shetj.compose.demo.ui.home_weight.addWeightGraph
+import me.shetj.compose.demo.ui.home.home_func.addFuncGraph
+import me.shetj.compose.demo.ui.home.home_weight.addWeightGraph
 import me.shetj.composekit.ui.theme.DefTheme
 import me.shetj.composekit.ui.weight.DemoSnackbar
 import me.shetj.composekit.utils.isDark

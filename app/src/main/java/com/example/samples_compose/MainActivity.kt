@@ -82,7 +82,6 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
@@ -151,7 +150,10 @@ class MainActivity : ComponentActivity() {
 
 
                     val drawerState = rememberDrawerState(Closed)
-                    val scope = rememberCoroutineScope()  // 用来做协程的作用域
+
+
+
+
                     systemUiController.setSystemBarsColor(Color.Transparent, darkIcons = false)
                     systemUiController.statusBarDarkContentEnabled = !isDarkModel
 

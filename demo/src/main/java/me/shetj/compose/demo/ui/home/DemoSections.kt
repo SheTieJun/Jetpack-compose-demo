@@ -67,4 +67,5 @@ enum class DemoFuncSections(
     VideoView(R.string.home_func, Icons.Outlined.ShoppingCart,Icons.Filled.ShoppingCart,  "$BASE_FUNC_ROUTER/VideoView"),
     Canvas(R.string.home_func, Icons.Outlined.ShoppingCart,Icons.Filled.ShoppingCart,  "$BASE_FUNC_ROUTER/Canvas"),
     FlowLayout(R.string.home_func, Icons.Outlined.ShoppingCart,Icons.Filled.ShoppingCart,  "$BASE_FUNC_ROUTER/FlowLayout"),
+    Animation(R.string.home_func, Icons.Outlined.ShoppingCart,Icons.Filled.ShoppingCart,  "$BASE_FUNC_ROUTER/Animation"),
 }

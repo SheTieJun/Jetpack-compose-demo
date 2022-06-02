@@ -122,7 +122,7 @@ class DemoAppState(
         // In order to discard duplicated navigation events, we check the Lifecycle
         if (from.lifecycleIsResumed()) {
             navController.navigate(route) {
-                launchSingleTop
+                launchSingleTop = true
             }
         }
     }

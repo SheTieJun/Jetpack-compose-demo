@@ -19,8 +19,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import me.shetj.compose.demo.ui.home_func.FuncUI
-import me.shetj.compose.demo.ui.home_weight.WidgetUI
+import me.shetj.compose.demo.ui.home.fun_mine.MineScreen
+import me.shetj.compose.demo.ui.home.home_func.FuncUI
+import me.shetj.compose.demo.ui.home.home_weight.WidgetUI
 
 @ExperimentalMaterial3Api
 fun NavGraphBuilder.addHomeGraph(
@@ -43,7 +44,6 @@ fun NavGraphBuilder.addHomeGraph(
 
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NetWorkUI(modifier: Modifier) {
     Surface(modifier = modifier.fillMaxSize()) {
@@ -54,28 +54,5 @@ fun NetWorkUI(modifier: Modifier) {
 
 @Composable
 fun otherUI(modifier: Modifier) {
-    Surface(modifier = modifier.fillMaxSize()) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = modifier
-                .fillMaxSize()
-                .wrapContentSize()
-                .padding(24.dp)
-        ) {
-            Spacer(Modifier.height(24.dp))
-            Text(
-                text = "其他",
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
-            Spacer(Modifier.height(16.dp))
-            Text(
-                text = "其他",
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
-    }
+     MineScreen()
 }

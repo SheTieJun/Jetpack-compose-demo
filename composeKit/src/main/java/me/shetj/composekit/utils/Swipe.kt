@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
@@ -48,7 +49,7 @@ fun Modifier.swipeToDismiss(
                         // Record the velocity of the drag.
                         velocityTracker.addPosition(change.uptimeMillis, change.position)
                         // Consume the gesture event, not passed to external
-                        change.consumePositionChange()
+                        if (change.positionChange() != Offset.Zero) change.consume()
                     }
                 }
                 // Dragging finished. Calculate the velocity of the fling.
