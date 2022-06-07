@@ -1,6 +1,7 @@
 package me.shetj.compose.demo.ui.home.home_func
 
 import android.util.Log
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -24,6 +25,7 @@ import me.shetj.compose.demo.ui.home.home_func.video.VideoItem
 import me.shetj.compose.demo.ui.home.home_weight.DemoTopBar
 
 
+@ExperimentalAnimationApi
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun VideoScreen(modifier: Modifier = Modifier) {

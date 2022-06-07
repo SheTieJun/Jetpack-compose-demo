@@ -1,5 +1,6 @@
 package me.shetj.compose.demo
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,6 +29,7 @@ import me.shetj.composekit.ui.theme.DefTheme
 import me.shetj.composekit.ui.weight.DemoSnackbar
 import me.shetj.composekit.utils.isDark
 
+@ExperimentalAnimationApi
 @ExperimentalPermissionsApi
 @ExperimentalMaterial3Api
 @ExperimentalPagerApi
@@ -76,6 +78,7 @@ fun DemoApp() {
 }
 
 
+@ExperimentalAnimationApi
 @ExperimentalPermissionsApi
 @ExperimentalPagerApi
 @ExperimentalMaterial3Api
