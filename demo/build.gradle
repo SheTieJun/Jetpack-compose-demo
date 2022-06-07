@@ -19,6 +19,15 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            keyAlias 'shetj'
+            keyPassword '123456'
+            storeFile file('./test.jks')
+            storePassword '123456'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
