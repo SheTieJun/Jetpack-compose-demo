@@ -25,3 +25,6 @@ fun String.log(){
 var isDark: MutableLiveData<Boolean> = MutableLiveData()
 
 var appTheme: MutableLiveData<AppTheme> = MutableLiveData(DynamicLight)
+
+
+typealias OnClick = () -> Unit

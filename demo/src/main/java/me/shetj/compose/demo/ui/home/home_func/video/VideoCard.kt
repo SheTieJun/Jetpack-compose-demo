@@ -2,6 +2,7 @@ package me.shetj.compose.demo.ui.home.home_func.video
 
 import android.view.LayoutInflater
 import android.view.View
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
@@ -24,6 +25,7 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.ui.StyledPlayerView
 import me.shetj.compose.demo.R
 
+@ExperimentalAnimationApi
 @Composable
 fun VideoCard(videoItem: VideoItem, exoPlayer: ExoPlayer, isPlaying: Boolean, onClick: () -> Unit) {
     val isPlayerUiVisible = remember { mutableStateOf(false) }
@@ -60,9 +62,9 @@ fun VideoPlayer(
         val layout = LayoutInflater.from(context).inflate(R.layout.video_player, null, false)
         val playerView = layout.findViewById(R.id.playerView) as StyledPlayerView
         playerView.apply {
-             this.setControllerVisibilityListener {
-                 onControllerVisibilityChanged(it == View.VISIBLE)
-             }
+            this.setControllerVisibilityListener {
+                onControllerVisibilityChanged(it == View.VISIBLE)
+            }
             player = exoPlayer
             setShowFastForwardButton(false)
             setShowNextButton(false)

@@ -29,9 +29,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import me.shetj.composekit.ui.theme.MD3
+import me.shetj.composekit.utils.OnClick
 
 @Composable
-fun CaseButton(name: String) {
+fun CaseButton(name: String, onclick: OnClick? = null) {
 
     Surface(
         modifier = Modifier
@@ -39,7 +40,7 @@ fun CaseButton(name: String) {
             .height(45.dp)
             .clip(RoundedCornerShape(8.dp))
             .clickable {
-
+                onclick?.invoke()
             }
     ) {
 

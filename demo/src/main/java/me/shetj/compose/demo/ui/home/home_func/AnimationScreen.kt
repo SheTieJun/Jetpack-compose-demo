@@ -24,10 +24,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.shetj.compose.demo.ui.home.home_weight.DemoTopBar
+import me.shetj.composekit.ui.theme.RedTheme
 
-@OptIn(ExperimentalAnimationApi::class)
+@ExperimentalAnimationApi
 @ExperimentalMaterial3Api
 @Composable
 fun AnimationScreen() {
@@ -51,7 +53,9 @@ fun AnimationScreen() {
 
                 AnimatedContent(
                     targetState = count,
-                    modifier = Modifier.height(40.dp).align(CenterVertically),
+                    modifier = Modifier
+                        .height(40.dp)
+                        .align(CenterVertically),
                     transitionSpec = {
                         // Compare the incoming number with the previous number.
                         if (targetState > initialState) {
@@ -93,4 +97,14 @@ fun AnimationScreen() {
         }
     }
 
+}
+
+@ExperimentalAnimationApi
+@ExperimentalMaterial3Api
+@Preview
+@Composable
+fun PreviewAnnim(){
+    RedTheme {
+        AnimationScreen()
+    }
 }

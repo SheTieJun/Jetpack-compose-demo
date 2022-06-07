@@ -2,6 +2,7 @@
 
 package me.shetj.compose.demo.ui.home.home_func
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -44,6 +45,7 @@ import me.shetj.composekit.ui.weight.ShowPermissionDialog
  * <b>@email：</b> 375105540@qq.com<br>
  * <b>@describe</b>  <br>
  */
+@ExperimentalAnimationApi
 @ExperimentalPermissionsApi
 @ExperimentalPagerApi
 @ExperimentalMaterial3Api
