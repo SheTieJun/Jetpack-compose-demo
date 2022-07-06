@@ -31,6 +31,7 @@ import androidx.navigation.compose.composable
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import me.shetj.compose.demo.DemoAppState
+import me.shetj.compose.demo.MainViewModel
 import me.shetj.compose.demo.model.FuncRepo
 import me.shetj.compose.demo.ui.home.BASE_FUNC_ROUTER
 import me.shetj.compose.demo.ui.home.DemoFuncSections
@@ -49,39 +50,47 @@ import me.shetj.composekit.ui.weight.ShowPermissionDialog
 @ExperimentalPermissionsApi
 @ExperimentalPagerApi
 @ExperimentalMaterial3Api
-fun NavGraphBuilder.addFuncGraph(appState: DemoAppState, modifier: Modifier = Modifier) {
+fun NavGraphBuilder.addFuncGraph(
+    appState: DemoAppState,
+    modifier: Modifier =Modifier,
+    viewModel: MainViewModel? = null
+) {
     composable(DemoFuncSections.WebView.route) { from ->
         WebViewUI(modifier)
     }
     composable(DemoFuncSections.ViewPage.route) { from ->
         PagerUI(modifier)
     }
-    composable(DemoFuncSections.Record.route){
+    composable(DemoFuncSections.Record.route) {
         RecordUI(modifier)
     }
-    composable(DemoFuncSections.VideoView.route){
+    composable(DemoFuncSections.VideoView.route) {
         VideoScreen(modifier)
     }
-    composable(DemoFuncSections.Canvas.route){
+    composable(DemoFuncSections.Canvas.route) {
         CanvasScreen()
     }
-    composable(DemoFuncSections.FlowLayout.route){
+    composable(DemoFuncSections.FlowLayout.route) {
         FlowLayoutScreen()
     }
-    composable(DemoFuncSections.Animation.route){
+    composable(DemoFuncSections.Animation.route) {
         AnimationScreen()
     }
 }
 
 @ExperimentalMaterial3Api
 @Composable
-fun FuncUI(modifier: Modifier = Modifier, onSnackSelected: (String, NavBackStackEntry) -> Unit, from: NavBackStackEntry){
+fun FuncUI(
+    modifier: Modifier = Modifier,
+    onSnackSelected: (String, NavBackStackEntry) -> Unit,
+    from: NavBackStackEntry
+) {
     Scaffold(modifier = modifier.fillMaxSize(),
         topBar = {
             DemoTopBar("Function Sample")
         }) { padding ->
 
-        FuncList(padding,onSnackSelected,from)
+        FuncList(padding, onSnackSelected, from)
     }
 }
 
@@ -93,10 +102,10 @@ fun FuncList(
 ) {
     val weights = FuncRepo.getFuncList()
     val map = DemoFuncSections.values().map { it.route }
-    val isShow   =  remember {
+    val isShow = remember {
         mutableStateOf(false)
     }
-    if (isShow.value){
+    if (isShow.value) {
         ShowTipDialog(isShow)
     }
 
@@ -104,7 +113,7 @@ fun FuncList(
 
     val openDialog by stateOfOpen
 
-    if (openDialog){
+    if (openDialog) {
         ShowPermissionDialog(openDialog = stateOfOpen)
     }
 

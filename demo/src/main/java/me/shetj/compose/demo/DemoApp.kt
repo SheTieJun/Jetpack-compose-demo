@@ -17,12 +17,15 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import me.shetj.compose.demo.ui.components.BottomBar
 import me.shetj.compose.demo.ui.home.DemoHomeSections
+import me.shetj.compose.demo.ui.home.DemoWeightSections
 import me.shetj.compose.demo.ui.home.addHomeGraph
+import me.shetj.compose.demo.ui.home.fun_netwrok.NetWorkScreen
 import me.shetj.compose.demo.ui.home.home_func.addFuncGraph
 import me.shetj.compose.demo.ui.home.home_weight.addWeightGraph
 import me.shetj.composekit.ui.theme.DefTheme
@@ -34,7 +37,7 @@ import me.shetj.composekit.utils.isDark
 @ExperimentalMaterial3Api
 @ExperimentalPagerApi
 @Composable
-fun DemoApp() {
+fun DemoApp(mainViewModel: MainViewModel) {
 
 
     //用来切换暗黑模式
@@ -69,8 +72,8 @@ fun DemoApp() {
                 startDestination = DemoDestinations.HOME,
                 modifier = Modifier.padding(innerPaddingModifier)
             ) {
-                DemoAppNavGraph(appState,onSnackSelected = { router, stack ->
-                    appState.navigateByRouter(router,stack)
+                DemoAppNavGraph(appState, mainViewModel, onSnackSelected = { router, stack ->
+                    appState.navigateByRouter(router, stack)
                 }, upPress = appState::upPress)
             }
         }
@@ -84,6 +87,7 @@ fun DemoApp() {
 @ExperimentalMaterial3Api
 fun NavGraphBuilder.DemoAppNavGraph(
     appState: DemoAppState,
+    viewModel: MainViewModel,
     onSnackSelected: (String, NavBackStackEntry) -> Unit,
     upPress: () -> Unit
 ) {
@@ -94,9 +98,9 @@ fun NavGraphBuilder.DemoAppNavGraph(
         route = DemoDestinations.HOME,
         startDestination = DemoHomeSections.WEIGHT.route
     ) {
-        addHomeGraph(onSnackSelected)
+        addHomeGraph(onSnackSelected, viewModel = viewModel)
         addWeightGraph(appState)
-        addFuncGraph(appState)
+        addFuncGraph(appState, viewModel = viewModel)
     }
 }
 
